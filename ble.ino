@@ -8,7 +8,7 @@ void initBLE() {
   }
 
   // set advertised local name and service UUID:
-  BLE.setLocalName("imu watch ble2");
+  BLE.setLocalName("imu left");
   BLE.setAdvertisedService(olaIMUService);
 
   // add the characteristic to the service

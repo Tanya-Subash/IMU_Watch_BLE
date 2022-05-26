@@ -72,7 +72,9 @@ bool ble_switched_on = false;
 const int payloadsize = 10; // number of packets 
 const int packetsize = 22; // number of bytes in a packet
 bool bufferfilled = false;
+int currentsample = 0;
 int currentpacket = 0;
+bool val = 1;
 
 // These UUIDs have been randomly generated. - they must match between the Central and Peripheral devices
 // Any changes you make here must be suitably made in the Python program as well
@@ -123,7 +125,7 @@ ulongunion_t _time;
 imuunion_t _imudata;
 bool newpacket = false;
 bool timeset = false;
-bool val = true;
+short samplenum = 0;
 
 #define USE_SPI       // Uncomment this to use SPI
 

@@ -5,7 +5,7 @@ void initInterruptTimer() {
   //  Repeated Count: Periodic 1-clock-cycle wide pulses with optional interrupts.
   //  The last parameter to am_hal_ctimer_period_set() has no effect in this mode.
   
-  setupTimerA(interruptTimer, 4); // timerNum, number of ticks 
+  setupTimerA(interruptTimer, 9); // timerNum, number of ticks 
   am_hal_ctimer_start(interruptTimer, AM_HAL_CTIMER_TIMERA);
 }
 

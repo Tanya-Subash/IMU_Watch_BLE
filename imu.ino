@@ -66,19 +66,18 @@ void readIMU() {
 }
 
 void fillDataBuffer(uint8_t buf[packetsize*payloadsize]) {
-  int currentbytes = currentpacket*packetsize;
-  _imudata.timeaccgyr[6] = currentpacket;
-  if (currentpacket < payloadsize) {
-    memcpy(buf+currentbytes, _time.bytes, sizeof(_time.bytes));
-    memcpy(buf+currentbytes+sizeof(_time.bytes), _imudata.bytes, sizeof(_imudata.bytes));
-    currentpacket += 1;
-  }
-  else {
+  int currentbytes = currentsample*packetsize;
+  _imudata.timeaccgyr[6] = samplenum;
+  memcpy(buf+currentbytes, _time.bytes, sizeof(_time.bytes));
+  memcpy(buf+currentbytes+sizeof(_time.bytes), _imudata.bytes, sizeof(_imudata.bytes));
+  currentsample += 1;
+  if (currentsample >= payloadsize) {
     memcpy(data_buffer, buf, packetsize*payloadsize);
     isbuf1 = !isbuf1;
     bufferfilled = true;
-    currentpacket = 0;
-  }
+    currentsample = 0;  
+  }  
+  samplenum += 1;
 }
 
 void imuPowerOn() {

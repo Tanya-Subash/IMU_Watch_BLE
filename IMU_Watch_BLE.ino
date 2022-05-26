@@ -6,13 +6,16 @@ void setup() {
   initSD();
   initBLE();
   initInterruptTimer();
+  pinMode(11, OUTPUT);
 }
 
 void loop() {
-  readIMU();
   if (not timeset) {
     blink2LED();
     delay(100);
+  }
+  else {
+    readIMU();
   }
   
   // Communication with docking station
